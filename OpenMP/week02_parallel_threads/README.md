@@ -142,4 +142,54 @@ int main() {
 2. Modify the above program to also print which thread did which iteration (use `omp_get_thread_num()`).
 3. Try adding `schedule(static, 1)` vs `schedule(dynamic, 4)` and observe load balancing.
 
+```
+    g++ -fopenmp SumOfSqsNnatNums.cpp -o test
+    test.exe
+```
 ---
+
+#### Output 1 : N = 9
+```
+    Iteration 4 done by thread[2]
+    Iteration 5 done by thread[3]
+    Iteration 3 done by thread[1]
+    Iteration 6 done by thread[4]
+    Iteration 1 done by thread[0]
+    Iteration 2 done by thread[0]
+    Iteration 8 done by thread[6]
+    Iteration 7 done by thread[5]
+    Iteration 9 done by thread[7]
+
+    Total sum = 285
+```
+---
+**Output 2 : N = 9, schedule(static,3)**
+```
+    Iteration 4 done by thread[1]
+    Iteration 5 done by thread[1]
+    Iteration 1 done by thread[0]
+    Iteration 2 done by thread[0]
+    Iteration 6 done by thread[1]
+    Iteration 7 done by thread[2]
+    Iteration 8 done by thread[2]
+    Iteration 3 done by thread[0]
+    Iteration 9 done by thread[2]
+
+    Total sum = 285
+```
+
+---
+**Output 3 : N = 9, schedule(dynamic,3)**
+```
+    Iteration 4 done by thread[0]
+    Iteration 1 done by thread[1]
+    Iteration 2 done by thread[1]
+    Iteration 3 done by thread[1]
+    Iteration 7 done by thread[4]
+    Iteration 8 done by thread[4]
+    Iteration 5 done by thread[0]
+    Iteration 6 done by thread[0]
+    Iteration 9 done by thread[4]
+
+    Total sum = 285
+```

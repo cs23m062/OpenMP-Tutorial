@@ -26,10 +26,11 @@ int main() {
     #pragma omp parallel firstprivate(i)
     {
         // each thread’s i starts at 42
+        int tid = omp_get_thread_num();
         printf("Firstprivate i in thread %d starts as %d\n",
-               omp_get_thread_num(), i);
-        i += omp_get_thread_num();
-        printf("…then modified to %d\n", i);
+               tid, i);
+        i += tid;
+        printf("in thread %d then modified to %d\n", tid,i);
     }
     printf("Original i after firstprivate = %d\n", i);
 
