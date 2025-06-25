@@ -1,8 +1,6 @@
-Here’s a professional and structured `README.md` for your OpenMP course repository:
 
 ---
 
-````markdown
 # 🧵 OpenMP: Beginner to Pro — Complete Parallel Programming Course
 
 Welcome to the **OpenMP: Beginner to Pro** course repository!  
@@ -36,26 +34,35 @@ The course is divided into progressive levels — from fundamentals to advanced 
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/your-username/OpenMP-Course.git
 cd OpenMP-Course
-````
+```
 
 ### 2. Compile an Example
 
+#### In C
 ```bash
-gcc -fopenmp examples/hello_world.c -o hello
-./hello
+gcc -fopenmp filename.c -o hello
+hello.exe
 ```
 
-> All examples work with GCC (Linux or MinGW on Windows). VS Code setup instructions are also provided in `docs/`.
+#### In C++
+```
+g++ -fopenmp filename.cpp -o test
+test.exe
+```
+
+> All examples work with GCC (Linux or MinGW on Windows). 
+VS Code setup instructions are also provided in `docs/`.
 
 ---
 
 ## 📁 Directory Structure
 
 ```bash
-OpenMP-Course/
+OpenMP/
 ├── week01_intro/
 ├── week02_parallel_threads/
 ├── week03_worksharing/
